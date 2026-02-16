@@ -12,7 +12,7 @@ function App() {
     setMedicineInfo(null);
 
     try {
-      const response = await fetch('http://localhost:3001/api/identify-medicine', {
+        const response = await fetch('/api/identify-medicine', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
