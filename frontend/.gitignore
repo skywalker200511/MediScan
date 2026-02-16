@@ -12,6 +12,15 @@ dist
 dist-ssr
 *.local
 
+# Environment variables - IMPORTANT!
+.env
+*.env
+backend/.env
+api/.env
+
+# Vercel
+.vercel
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

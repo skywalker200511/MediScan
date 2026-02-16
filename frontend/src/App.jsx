@@ -11,15 +11,19 @@ function App() {
     setIsLoading(true);
     setMedicineInfo(null);
 
-    try {
-        const response = await fetch('/api/identify-medicine', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ imageBase64: imageData }),
-      });
+     try {
+    // Use different URL for local vs production
+    const apiUrl = window.location.hostname === 'localhost' 
+      ? 'http://localhost:3001/api/identify-medicine'
+      : '/api/identify-medicine';
 
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ imageBase64: imageData }),
+    });
       const data = await response.json();
 
       if (data.success) {
