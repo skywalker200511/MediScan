@@ -109,3 +109,82 @@
   font-size: 0.95rem;
   line-height: 1.6;
 }
+/* ... keep all existing styles ... */
+
+/* Add these new styles at the end */
+
+.quick-summary {
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border-left: 4px solid #667eea;
+}
+
+.quick-summary h3 {
+  color: #667eea;
+  margin: 0 0 15px 0;
+  font-size: 1.3rem;
+}
+
+.summary-text {
+  line-height: 1.8;
+}
+
+.summary-text p {
+  margin: 10px 0;
+  color: #333;
+  font-size: 1.05rem;
+}
+
+.summary-text strong {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.toggle-details-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.toggle-details-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.toggle-details-btn:active {
+  transform: translateY(0);
+}
+
+.full-details {
+  animation: slideDown 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.full-details h3 {
+  color: #667eea;
+  margin: 25px 0 15px 0;
+  font-size: 1.3rem;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+  to {
+    opacity: 1;
+    max-height: 5000px;
+  }
+}
