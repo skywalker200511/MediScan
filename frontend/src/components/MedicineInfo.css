@@ -1,0 +1,111 @@
+.medicine-info-container {
+  margin-top: 30px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loading-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.spinner-large {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #667eea;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+.loading-state p {
+  color: #667eea;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.info-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 12px 12px 0 0;
+  margin: -30px -30px 0 -30px;
+}
+
+.info-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.info-content {
+  padding: 30px 0;
+}
+
+.ai-response {
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.ai-response h3 {
+  color: #667eea;
+  margin: 25px 0 15px 0;
+  font-size: 1.3rem;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 8px;
+}
+
+.ai-response h3:first-child {
+  margin-top: 0;
+}
+
+.ai-response p {
+  margin: 12px 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.ai-response li {
+  margin: 8px 0 8px 20px;
+  color: #444;
+}
+
+.ai-response strong {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.disclaimer {
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.disclaimer strong {
+  color: #856404;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.disclaimer p {
+  color: #856404;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
