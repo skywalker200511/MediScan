@@ -13,17 +13,15 @@ function ImageUpload({ onImageUpload, isLoading }) {
   };
 
   const processFile = (file) => {
-    // Check if it's an image
     if (!file.type.startsWith('image/')) {
       alert('Please upload an image file');
       return;
     }
 
-    // Create preview
     const reader = new FileReader();
     reader.onloadend = () => {
       setPreview(reader.result);
-      onImageUpload(reader.result); // Send to parent component
+      onImageUpload(reader.result);
     };
     reader.readAsDataURL(file);
   };
@@ -52,32 +50,53 @@ function ImageUpload({ onImageUpload, isLoading }) {
     setPreview(null);
   };
 
+  const openCamera = () => {
+    document.getElementById('camera-input').click();
+  };
+
   return (
     <div className="image-upload-container">
       <h2>📸 Upload Medicine Image</h2>
       
       {!preview ? (
-        <div
-          className={`upload-box ${dragActive ? 'drag-active' : ''}`}
-          onDragEnter={handleDrag}
-          onDragLeave={handleDrag}
-          onDragOver={handleDrag}
-          onDrop={handleDrop}
-        >
-          <input
-            type="file"
-            id="file-input"
-            accept="image/*"
-            onChange={handleFileChange}
-            style={{ display: 'none' }}
-          />
-          
-          <label htmlFor="file-input" className="upload-label">
-            <div className="upload-icon">📷</div>
-            <p className="upload-text">Click to upload or drag and drop</p>
-            <p className="upload-subtext">PNG, JPG, JPEG (Max 10MB)</p>
-          </label>
-        </div>
+        <>
+          <div
+            className={`upload-box ${dragActive ? 'drag-active' : ''}`}
+            onDragEnter={handleDrag}
+            onDragLeave={handleDrag}
+            onDragOver={handleDrag}
+            onDrop={handleDrop}
+          >
+            <input
+              type="file"
+              id="file-input"
+              accept="image/*"
+              onChange={handleFileChange}
+              style={{ display: 'none' }}
+            />
+            
+            <input
+              type="file"
+              id="camera-input"
+              accept="image/*"
+              capture="environment"
+              onChange={handleFileChange}
+              style={{ display: 'none' }}
+            />
+            
+            <label htmlFor="file-input" className="upload-label">
+              <div className="upload-icon">📷</div>
+              <p className="upload-text">Click to upload or drag and drop</p>
+              <p className="upload-subtext">PNG, JPG, JPEG (Max 10MB)</p>
+            </label>
+          </div>
+
+          <div className="camera-options">
+            <button className="camera-btn" onClick={openCamera}>
+              📱 Take Photo with Camera
+            </button>
+          </div>
+        </>
       ) : (
         <div className="preview-container">
           <img src={preview} alt="Medicine preview" className="preview-image" />
