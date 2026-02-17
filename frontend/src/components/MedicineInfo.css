@@ -1,9 +1,9 @@
 .medicine-info-container {
   margin-top: 30px;
-  animation: fadeIn 0.5s ease;
+  animation: fadeInUp 0.5s ease;
 }
 
-@keyframes fadeIn {
+@keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -20,52 +20,149 @@
 }
 
 .spinner-large {
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #667eea;
+  border: 3px solid rgba(123, 47, 255, 0.2);
+  border-top: 3px solid var(--primary);
   border-radius: 50%;
   width: 60px;
   height: 60px;
   animation: spin 1s linear infinite;
   margin: 0 auto 20px;
+  box-shadow: 0 0 30px rgba(0, 245, 160, 0.3);
 }
 
 .loading-state p {
-  color: #667eea;
-  font-size: 1.2rem;
-  font-weight: 600;
+  color: var(--primary);
+  font-size: 1.1rem;
+  font-weight: 500;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 1px;
 }
 
 .info-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 20px;
-  border-radius: 12px 12px 0 0;
-  margin: -30px -30px 0 -30px;
+  background: linear-gradient(135deg, rgba(0, 245, 160, 0.1), rgba(123, 47, 255, 0.1));
+  border: 1px solid rgba(0, 245, 160, 0.2);
+  padding: 20px 25px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .info-header h2 {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .info-content {
-  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.ai-response {
-  background: #f9f9f9;
+.quick-summary {
+  background: var(--bg-card2);
   padding: 25px;
-  border-radius: 12px;
-  margin-bottom: 20px;
+  border-radius: 14px;
+  border-left: 3px solid var(--primary);
+  border: 1px solid rgba(0, 245, 160, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.quick-summary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  border-radius: 3px 0 0 3px;
+}
+
+.quick-summary h3 {
+  color: var(--primary);
+  margin: 0 0 15px 0;
+  font-size: 1rem;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.summary-text p {
+  margin: 10px 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
   line-height: 1.8;
 }
 
+.summary-text strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.toggle-details-btn {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  color: var(--secondary);
+  border: 1px solid rgba(123, 47, 255, 0.4);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.toggle-details-btn:hover {
+  background: rgba(123, 47, 255, 0.1);
+  border-color: var(--secondary);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(123, 47, 255, 0.15);
+}
+
+.full-details {
+  animation: slideDown 0.3s ease;
+  background: var(--bg-card2);
+  border-radius: 14px;
+  padding: 25px;
+  border: 1px solid var(--border);
+}
+
+.full-details h3 {
+  color: var(--primary);
+  margin: 0 0 20px 0;
+  font-size: 1rem;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .ai-response h3 {
-  color: #667eea;
-  margin: 25px 0 15px 0;
-  font-size: 1.3rem;
-  border-bottom: 2px solid #667eea;
+  color: var(--primary);
+  margin: 25px 0 10px 0;
+  font-size: 1rem;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 245, 160, 0.2);
 }
 
 .ai-response h3:first-child {
@@ -73,118 +170,42 @@
 }
 
 .ai-response p {
-  margin: 12px 0;
-  color: #333;
-  font-size: 1rem;
+  margin: 10px 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.8;
 }
 
 .ai-response li {
   margin: 8px 0 8px 20px;
-  color: #444;
+  color: var(--text-secondary);
+  line-height: 1.7;
 }
 
 .ai-response strong {
-  color: #667eea;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
 .disclaimer {
-  background: #fff3cd;
-  border-left: 4px solid #ffc107;
-  padding: 15px 20px;
-  border-radius: 8px;
-  margin-top: 20px;
+  background: rgba(255, 193, 7, 0.05);
+  border: 1px solid rgba(255, 193, 7, 0.2);
+  padding: 16px 20px;
+  border-radius: 12px;
 }
 
 .disclaimer strong {
-  color: #856404;
+  color: #FFD60A;
   display: block;
   margin-bottom: 8px;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.5px;
 }
 
 .disclaimer p {
-  color: #856404;
+  color: rgba(255, 214, 10, 0.7);
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   line-height: 1.6;
-}
-/* ... keep all existing styles ... */
-
-/* Add these new styles at the end */
-
-.quick-summary {
-  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-  padding: 25px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  border-left: 4px solid #667eea;
-}
-
-.quick-summary h3 {
-  color: #667eea;
-  margin: 0 0 15px 0;
-  font-size: 1.3rem;
-}
-
-.summary-text {
-  line-height: 1.8;
-}
-
-.summary-text p {
-  margin: 10px 0;
-  color: #333;
-  font-size: 1.05rem;
-}
-
-.summary-text strong {
-  color: #667eea;
-  font-weight: 600;
-}
-
-.toggle-details-btn {
-  width: 100%;
-  padding: 15px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-}
-
-.toggle-details-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-}
-
-.toggle-details-btn:active {
-  transform: translateY(0);
-}
-
-.full-details {
-  animation: slideDown 0.3s ease;
-  margin-bottom: 20px;
-}
-
-.full-details h3 {
-  color: #667eea;
-  margin: 25px 0 15px 0;
-  font-size: 1.3rem;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-  }
-  to {
-    opacity: 1;
-    max-height: 5000px;
-  }
 }

@@ -3,107 +3,140 @@
 }
 
 .image-upload-container h2 {
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 20px;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .upload-box {
-  border: 3px dashed #ccc;
-  border-radius: 15px;
+  border: 2px dashed rgba(123, 47, 255, 0.4);
+  border-radius: 16px;
   padding: 60px 20px;
   text-align: center;
   transition: all 0.3s ease;
   cursor: pointer;
-  background: #f9f9f9;
+  background: rgba(123, 47, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 245, 160, 0.05) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .upload-box:hover {
-  border-color: #667eea;
-  background: #f0f0ff;
+  border-color: var(--primary);
+  background: rgba(0, 245, 160, 0.05);
+}
+
+.upload-box:hover::before {
+  opacity: 1;
 }
 
 .upload-box.drag-active {
-  border-color: #667eea;
-  background: #e6e6ff;
-  transform: scale(1.02);
+  border-color: var(--primary);
+  background: rgba(0, 245, 160, 0.08);
+  transform: scale(1.01);
 }
 
 .upload-label {
   cursor: pointer;
   display: block;
+  position: relative;
+  z-index: 1;
 }
 
 .upload-icon {
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin-bottom: 15px;
+  display: block;
+  filter: drop-shadow(0 0 20px rgba(0, 245, 160, 0.5));
+  animation: iconPulse 3s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 .upload-text {
-  font-size: 1.2rem;
-  color: #333;
+  font-size: 1.1rem;
+  color: var(--text-primary);
   margin-bottom: 8px;
   font-weight: 500;
 }
 
 .upload-subtext {
-  color: #666;
-  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-family: 'Space Mono', monospace;
 }
 
 .preview-container {
   position: relative;
-  border-radius: 15px;
+  border-radius: 16px;
   overflow: hidden;
-  border: 2px solid #ddd;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 30px rgba(123, 47, 255, 0.2);
 }
 
 .preview-image {
   width: 100%;
   max-height: 400px;
   object-fit: contain;
-  background: #f5f5f5;
+  background: var(--bg-card2);
 }
 
 .clear-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(255, 0, 0, 0.8);
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 60, 172, 0.8);
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 8px 14px;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
 }
 
 .clear-btn:hover {
-  background: rgba(255, 0, 0, 1);
+  background: var(--accent);
+  transform: scale(1.05);
 }
 
 .loading-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.95);
+  inset: 0;
+  background: rgba(10, 10, 15, 0.9);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(4px);
 }
 
 .spinner {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #667eea;
+  border: 3px solid rgba(123, 47, 255, 0.2);
+  border-top: 3px solid var(--primary);
   border-radius: 50%;
   width: 50px;
   height: 50px;
   animation: spin 1s linear infinite;
   margin-bottom: 15px;
+  box-shadow: 0 0 20px rgba(0, 245, 160, 0.3);
 }
 
 @keyframes spin {
@@ -112,37 +145,37 @@
 }
 
 .loading-overlay p {
-  color: #667eea;
-  font-weight: 600;
-  font-size: 1.1rem;
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 1px;
 }
 
 .camera-options {
-  margin-top: 20px;
+  margin-top: 16px;
   text-align: center;
 }
 
 .camera-btn {
-  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 12px;
-  font-size: 1.1rem;
+  background: linear-gradient(135deg, rgba(0, 245, 160, 0.15), rgba(123, 47, 255, 0.15));
+  color: var(--primary);
+  border: 1px solid rgba(0, 245, 160, 0.3);
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  font-family: 'Outfit', sans-serif;
 }
 
 .camera-btn:hover {
+  background: linear-gradient(135deg, rgba(0, 245, 160, 0.25), rgba(123, 47, 255, 0.25));
+  border-color: var(--primary);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
-}
-
-.camera-btn:active {
-  transform: translateY(0);
+  box-shadow: 0 8px 25px rgba(0, 245, 160, 0.2);
 }

@@ -1,21 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #00F5A0;
+  --primary-dark: #00D68F;
+  --secondary: #7B2FFF;
+  --accent: #FF3CAC;
+  --bg-dark: #0A0A0F;
+  --bg-card: #12121A;
+  --bg-card2: #1A1A28;
+  --text-primary: #F0F0FF;
+  --text-secondary: #9999BB;
+  --border: rgba(123, 47, 255, 0.3);
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-dark);
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* Animated background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse at 10% 20%, rgba(123, 47, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 80%, rgba(0, 245, 160, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 60, 172, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating particles */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle, rgba(0, 245, 160, 0.3) 1px, transparent 1px),
+    radial-gradient(circle, rgba(123, 47, 255, 0.2) 1px, transparent 1px);
+  background-size: 50px 50px, 80px 80px;
+  background-position: 0 0, 25px 25px;
+  pointer-events: none;
+  z-index: 0;
+  animation: particleFloat 20s linear infinite;
+  opacity: 0.4;
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-50px); }
 }
 
 #root {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  max-width: 1200px;
+  max-width: 900px;
+  margin: 0 auto;
   padding: 20px;
 }
 
@@ -23,30 +80,85 @@ body {
   width: 100%;
 }
 
+/* Header */
 header {
   text-align: center;
-  color: white;
-  margin-bottom: 40px;
-  padding: 30px 0;
+  padding: 50px 0 40px;
+  position: relative;
+}
+
+.header-badge {
+  display: inline-block;
+  background: rgba(0, 245, 160, 0.1);
+  border: 1px solid rgba(0, 245, 160, 0.3);
+  color: var(--primary);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 header h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  font-size: 4rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00F5A0 0%, #7B2FFF 50%, #FF3CAC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+  line-height: 1;
+  letter-spacing: -2px;
 }
 
 header p {
-  font-size: 1.2rem;
-  opacity: 0.9;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
+/* Glowing line */
+.header-line {
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  margin: 20px auto 0;
+  border-radius: 2px;
+}
+
+/* Main card */
 main {
-  background: white;
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-  min-height: 500px;
-  margin: 0 auto;
-  max-width: 800px;
+  background: var(--bg-card);
+  border-radius: 24px;
+  padding: 40px;
+  border: 1px solid var(--border);
+  box-shadow: 
+    0 0 0 1px rgba(123, 47, 255, 0.1),
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 80px rgba(123, 47, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Card glow effect */
+main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--secondary), var(--primary), transparent);
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  padding: 30px 0;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-family: 'Space Mono', monospace;
 }

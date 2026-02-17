@@ -11,19 +11,17 @@ function App() {
     setIsLoading(true);
     setMedicineInfo(null);
 
-     try {
-    // Use different URL for local vs production
-    const apiUrl = window.location.hostname === 'localhost' 
-      ? 'http://localhost:3001/api/identify-medicine'
-      : '/api/identify-medicine';
+    try {
+      const apiUrl = window.location.hostname === 'localhost' 
+        ? 'http://localhost:3001/api/identify-medicine'
+        : '/api/identify-medicine';
 
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ imageBase64: imageData }),
-    });
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ imageBase64: imageData }),
+      });
+
       const data = await response.json();
 
       if (data.success) {
@@ -42,8 +40,10 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>🏥 MediScan</h1>
-        <p>AI-Powered Medicine Information Assistant</p>
+        <div className="header-badge">✦ AI Powered</div>
+        <h1>MediScan</h1>
+        <p>Upload a medicine photo for instant AI-powered identification</p>
+        <div className="header-line"></div>
       </header>
       
       <main>
@@ -57,6 +57,10 @@ function App() {
           isLoading={isLoading}
         />
       </main>
+
+      <footer className="app-footer">
+        <p>MediScan © 2026 · Powered by Gemini AI · For informational purposes only</p>
+      </footer>
     </div>
   )
 }
