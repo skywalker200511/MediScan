@@ -1,1 +1,6 @@
-.vercel
+.env
+*.env
+backend/.env
+api/.env
+.vercel/
+node_modules/
