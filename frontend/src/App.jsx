@@ -3,12 +3,13 @@ import Navbar from './components/navbar'
 import ImageUpload from './components/ImageUpload'
 import MedicineInfo from './components/MedicineInfo'
 import MedicalChat from './components/MedicalChat'
+import HelpPage from './components/HelpPage'  // ADD THIS IMPORT
 import './App.css'
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [medicineInfo, setMedicineInfo] = useState(null);
-  const [currentPage, setCurrentPage] = useState('home'); // 'home' or 'chat'
+  const [currentPage, setCurrentPage] = useState('home');
 
   const handleImageUpload = async (imageData) => {
     setIsLoading(true);
@@ -65,7 +66,7 @@ function App() {
                 </div>
                 <div className="stat-divider"></div>
                 <div className="stat-item">
-                  <div className="stat-value">&lt;3s</div>
+                  <div className="stat-value">&lt;10s</div>
                   <div className="stat-label">Response Time</div>
                 </div>
                 <div className="stat-divider"></div>
@@ -130,12 +131,17 @@ function App() {
             </div>
           </section>
         </>
-      ) : (
+      ) : currentPage === 'chat' ? (
         /* Chat Page */
         <section className="chat-page-section">
           <MedicalChat />
         </section>
-      )}
+      ) : currentPage === 'help' ? (
+        /* Help Page */
+        <section className="chat-page-section">
+          <HelpPage />
+        </section>
+      ) : null}
 
       <footer className="app-footer">
         <div className="footer-content">
